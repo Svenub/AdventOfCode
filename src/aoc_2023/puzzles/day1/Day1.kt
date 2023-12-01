@@ -18,7 +18,7 @@ fun main() {
 }
 
 
-fun String.digitToText(): String {
+fun String.textToDigit(): String {
     return when {
         this == "one" -> "1"
         this == "two" -> "2"
@@ -70,7 +70,7 @@ fun solve2(input: List<String>): Int {
             acc += char
             val matchResult = pattern.find(acc)
             if (matchResult != null) {
-                result += matchResult.value.digitToText()
+                result += matchResult.value.textToDigit()
                 acc = ""
                 break
             }
@@ -87,7 +87,7 @@ fun solve2(input: List<String>): Int {
             acc = char + acc
             val matchResult = pattern.find(acc)
             if (matchResult != null) {
-                result += matchResult.value.digitToText()
+                result += matchResult.value.textToDigit()
                 break
             }
         }
