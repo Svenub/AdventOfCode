@@ -82,7 +82,7 @@ fun solve1(games: List<Game>): Int {
     val green = 13
     val blue = 14
 
-    val sum =
+    val filteredGames =
         games.filter { game ->
             game.sets.all { set ->
                 set.cubes.all { cube ->
@@ -94,7 +94,7 @@ fun solve1(games: List<Game>): Int {
         }
 
 
-    return sum.sumOf { it.id }
+    return filteredGames.sumOf { it.id }
 }
 
 fun solve2(games: List<Game>): Int {
