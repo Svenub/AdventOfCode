@@ -3,9 +3,7 @@ package aoc_2023.puzzles.day2
 import java.io.FileReader
 
 enum class Color {
-    Blue,
-    Red,
-    Green
+    Blue, Red, Green
 }
 
 data class Cube(
@@ -17,7 +15,7 @@ data class Set(
 )
 
 data class Game(
-    val id: Int,
+    val id: Int = 0,
     val sets: MutableList<Set> = mutableListOf()
 )
 
@@ -39,7 +37,7 @@ fun main() {
     val input: MutableList<Game> = mutableListOf()
 
     fr.readLines().forEach { string ->
-        createGame(string)?.let { game ->
+        createGame(string).let { game ->
             input.add(game)
         }
     }
@@ -49,14 +47,14 @@ fun main() {
 }
 
 
-fun createGame(string: String): Game? {
+fun createGame(string: String): Game {
     val serializedText = string.replace(":", "").replace(",", "").replace(";", " -")
     val stringList = serializedText.split(" ")
-    var game: Game? = null
+    var game = Game()
     var set = Set()
     var index = 0
     while (true) {
-        if (stringList[index] == "Game") {
+        if (stringList[index].matches("Game".toRegex())) {
             game = Game(id = stringList[index + 1].toInt())
             index++
         } else if (stringList[index].matches("[0-9]+".toRegex())) {
@@ -66,14 +64,14 @@ fun createGame(string: String): Game? {
                 "green" -> set.cubes.add(Pair(stringList[index].toInt(), Cube(Color.Green)))
             }
         } else if (stringList[index].matches("-".toRegex())) {
-            game?.sets?.add(set)
+            game.sets.add(set)
             set = Set()
         }
 
         index++
         if (stringList.size - 1 == index) break
     }
-    game?.sets?.add(set)
+    game.sets.add(set)
     return game
 }
 
