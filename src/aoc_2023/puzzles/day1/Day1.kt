@@ -1,4 +1,4 @@
-package aoc_2023.puzzles
+package aoc_2023.puzzles.day1
 
 import java.io.FileReader
 
