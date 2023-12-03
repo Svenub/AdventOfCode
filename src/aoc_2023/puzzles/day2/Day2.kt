@@ -78,17 +78,17 @@ fun serializeInput(string: String): Game? {
 }
 
 fun solve1(games: List<Game>): Int {
-    val red = 12
-    val green = 13
-    val blue = 14
+    val redAmount = 12
+    val greenAmount = 13
+    val blueAmount = 14
 
     val filteredGames =
         games.filter { game ->
             game.sets.all { set ->
                 set.cubes.all { cube ->
-                    cube.first <= red && cube.second.isRed() ||
-                            cube.first <= green && cube.second.isGreen() ||
-                            cube.first <= blue && cube.second.isBlue()
+                    cube.first <= redAmount && cube.second.isRed() ||
+                            cube.first <= greenAmount && cube.second.isGreen() ||
+                            cube.first <= blueAmount && cube.second.isBlue()
                 }
             }
         }
