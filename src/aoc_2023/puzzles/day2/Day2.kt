@@ -86,9 +86,9 @@ fun solve1(games: List<Game>): Int {
         games.filter { game ->
             game.sets.all { set ->
                 set.cubes.all { cube ->
-                    cube.first <= red && cube.second.color == Color.Red ||
-                            cube.first <= green && cube.second.color == Color.Green ||
-                            cube.first <= blue && cube.second.color == Color.Blue
+                    cube.first <= red && cube.second.isRed() ||
+                            cube.first <= green && cube.second.isGreen() ||
+                            cube.first <= blue && cube.second.isBlue()
                 }
             }
         }
