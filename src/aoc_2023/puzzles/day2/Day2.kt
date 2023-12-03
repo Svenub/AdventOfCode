@@ -39,8 +39,8 @@ fun main() {
     val input: MutableList<Game> = mutableListOf()
 
     fr.readLines().forEach { string ->
-        serializeInput(string)?.let {
-            input.add(it)
+        createGame(string)?.let { game ->
+            input.add(game)
         }
     }
 
@@ -49,7 +49,7 @@ fun main() {
 }
 
 
-fun serializeInput(string: String): Game? {
+fun createGame(string: String): Game? {
     val serializedText = string.replace(":", "").replace(",", "").replace(";", " -")
     val stringList = serializedText.split(" ")
     var game: Game? = null
