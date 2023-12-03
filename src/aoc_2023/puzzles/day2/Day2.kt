@@ -93,7 +93,6 @@ fun solve1(games: List<Game>): Int {
             }
         }
 
-    println(sum)
 
     return sum.sumOf { it.id }
 }
